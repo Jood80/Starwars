@@ -35,19 +35,25 @@ type Person {
 }
 `;
 
-const resolvers = {
-  Person: {
-    homeworld: async (parent) => {
-      const response = await fetch(parent.homeworld);
-      return response.json();
-    },
-    films: (parent) => {
+
+const resolveFilms= (parent) => {
       const promises = parent.films.map(async (url) => {
         const response = await fetch(url);
         return response.json();
       });
       return Promise.all(promises);
+    } 
+
+const resolvers = {
+  Planet: {
+    films: resolveFilms
+  },  
+  Person: {
+    homeworld: async (parent) => {
+      const response = await fetch(parent.homeworld);
+      return response.json();
     },
+    films: resolveFilms
   },
   Query: {
     hello: (_, { name }) => `Hello ${name || 'World'}`,

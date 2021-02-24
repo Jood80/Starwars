@@ -8,29 +8,6 @@ Fetching external data at node env using Graphql
 - `$ npm start`
 - in your browser write `http://localhost:5000/playground`
 - write down your query, here is as example
-```query
-{
-  getPerson(id: 1) {
-    name
-    mass
-    gender
-    height
-    films {
-      title
-      release_date
-    }
-    homeworld {
-      name
-      rotation_period
-      orbital_period
-      films {
-        title
-        director
-        producer
-      }
-    }
-  }
-}
+![image](https://user-images.githubusercontent.com/56412800/109064832-8c6cc080-76f3-11eb-82cc-d8483c8b1441.png)
 
-```
 you'll be able to see the outcome results on your GraphQL panel
